@@ -1,0 +1,40 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#site-logo {
+    height: 2.5rem;
+}
+
+header form input:focus {
+    box-shadow: 0px 0px 5px 2px white !important;
+    border: 1px solid white !important;
+}
+
+a.nav-link:hover {
+    color: aquamarine;
+}
+
+a.nav-link.active {
+    font-weight: bolder;
+    color: rgb(17, 252, 174) !important;
+}
+
+a.btn-right {
+text-align: end;
+}
+
+footer{
+    background-color: darkkhaki;
+}
+
+footer>div>img{
+    width: 40px;
+    height: 40px;
+}
+
+table{
+    border: 1px black;
+}
