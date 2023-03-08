@@ -13,28 +13,35 @@ header form input:focus {
     border: 1px solid white !important;
 }
 
-a.nav-link:hover {
-    color: aquamarine;
+li a:visited {
+    color:black
 }
 
-a.nav-link.active {
-    font-weight: bolder;
-    color: rgb(17, 252, 174) !important;
+li a:hover {
+    background-color: darkkhaki
 }
 
-a.btn-right {
-text-align: end;
-}
-
-footer{
+a:hover {
     background-color: darkkhaki;
 }
 
-footer>div>img{
+section {
+    min-height: 70%;
+}
+
+.btn {
+    background-color: darkkhaki;
+}
+
+footer {
+    background-color: darkkhaki;
+}
+
+footer>div>img {
     width: 40px;
     height: 40px;
 }
 
-table{
+table {
     border: 1px black;
 }

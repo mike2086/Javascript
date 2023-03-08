@@ -17,7 +17,7 @@
     <header class="text-center">
 
         <div class="d-flex justify-content-between mx-4 w-10">
-            <div class="">
+            <div>
                 <a class="navbar-brand" href="#">
                     <img src="./assets/Logo_Amazing_Events.png" alt="Logo" style="width: 200px" class="rounded-pill">
                 </a>
@@ -27,23 +27,23 @@
                 <div class="d-flex flex-wrap align-items-end justify-content-end justify-content-lg-end">
                     <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
                         <li>
-                            <a href="./index.html" class="nav-link text-primary bi d-inline-block mx-auto mb-1"> Home
+                            <a href="./index.html" class="nav-link bi d-inline-block mx-auto mb-1"> Home
                             </a>
                         </li>
                         <li>
-                            <a href="./upcoming_events.html" class="nav-link text-black bi d-inline-block mx-auto mb-1">
+                            <a href="./upcoming_events.html" class="nav-link bi d-inline-block mx-auto mb-1">
                                 Upcoming Events </a>
                         </li>
                         <li>
-                            <a href="./past_events.html" class="nav-link text-black bi d-inline-block mx-auto mb-1">
+                            <a href="./past_events.html" class="nav-link bi d-inline-block mx-auto mb-1">
                                 Past Events </a>
                         </li>
                         <li>
-                            <a href="./contact.html" class="nav-link text-black bi d-inline-block mx-auto mb-1"> Contact
+                            <a href="./contact.html" class="nav-link bi d-inline-block mx-auto mb-1"> Contact
                             </a>
                         </li>
                         <li>
-                            <a href="./stats.html" class="nav-link text-black bi d-inline-block mx-auto mb-1"> Stats
+                            <a href="./stats.html" class="nav-link bi d-inline-block mx-auto mb-1"> Stats
                             </a>
                         </li>
                     </ul>
@@ -54,10 +54,10 @@
 
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
 
-            <div>
-                <a class="m-4" href="./past_events.html">&#10094;</a>
-                <h4 class="d-inline-block ">CONTAC</h4>
-                <a class="btn-right m-4" href="./stats.html">&#10095;</a>
+            <div class="row col-12 justify-content-center">
+                <a class="m-1.5 col-3 text-end" href="./past_events.html">&#10094;</a>
+                <h4 class="d-inline-block col-5 text-center">CONTACT</h4>
+                <a class="m-1.5 col-3 text-start" href="./stats.html">&#10095;</a>
             </div>
 
         </nav>
@@ -65,18 +65,18 @@
 
     </header>
 
-    <section>
+    <section class="">
 
-        <form class="d-flex justify-content-center" action="./contact.html" method="get">
-            <div class="w-50 text-center">
+        <form class="d-flex justify-content-center " action="./contact.html" method="get">
+            <div class="w-50 text-center ">
 
-                <div class="mb-2">
+                <div class="mb-2 pt-5">
                     <label for="name" class="form-label"></label>
-                    <input type="text" placeholder="Tu nombre" class="form-control" id="name">
+                    <input type="text" placeholder="Name" class="form-control" id="name">
                 </div>
                 <div class="mb-2">
                     <label for="email" class="form-label"></label>
-                    <input type="email" placeholder="Tu email" class="form-control" id="email">
+                    <input type="email" placeholder="E-mail" class="form-control" id="email">
                 </div>
                 <div class="pt-4 pb-4">
                     <textarea name="message" placeholder="Message" class="form-control" id="message" rows="5"
@@ -87,14 +87,14 @@
         </form>
     </section>
 
-    <footer>
-        <div class="d-inline-flex">
-            <img class="m-1 p-1" src="./assets/logo_instagram.png" alt="logo instagram">
-            <img class="m-1 p-1" src="./assets/logo_face.png" alt="logo Facebook">
-            <img class="m-1 p-1" src="./assets/logo_whatsapp.png" alt="logo Whatsapp">
+    <footer class="">
+        <div class="row col-3 d-inline-block mx-4">
+            <img class="m-1 p-1 col-2" src="./assets/logo_instagram.png" alt="logo instagram">
+            <img class="m-1 p-1 col-2" src="./assets/logo_face.png" alt="logo Facebook">
+            <img class="m-1 p-1 col-2" src="./assets/logo_whatsapp.png" alt="logo Whatsapp">
         </div>
-    
-        <div class="d-inline-flex">
+
+        <div class="row col-8 d-inline-block text-end mx-2">
             <P>Cohort FE13-TN </P>
         </div>
     </footer>
