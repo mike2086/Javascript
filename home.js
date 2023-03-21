@@ -1,3 +1,20 @@
+fetch("https://mindhub-xj03.onrender.com/api/amazing")
+.then((respuesta)=> respuesta.json())
+.then((data) =>{
+    console.log(data);
+    insertDom(data.events)
+    insertCheckboxes(data.events)
+    function filtroCombinado() {
+        let arrayFitradoEventos = filtrarEventos(data.events, buscador.value)
+        let arrayFiltradoCategorias = filtrarCategorias(arrayFitradoEventos)
+        insertDom(arrayFiltradoCategorias)
+    }
+    buscador.addEventListener('input',filtroCombinado)
+    divCheckboxes.addEventListener('change',filtroCombinado)
+
+})
+.catch((Error)=> alert(Error))
+
 // insert events in DOM
 function insertDom(events) {
     let template = "";
@@ -15,7 +32,7 @@ function insertDom(events) {
                         <p class="card-text">${events[i].description}</p>
                         <p class="card-text">${events[i].price}</p>
                         <p class="card-text">${events[i].category}</p>
-                        <a href="#" class="btn btn-primary">More Info</a>
+                        <a href="./details.html?id=${events[i]._id}" class="btn btn-primary">Details</a>
                     </div>
                 </div>
             </div>                        
@@ -25,20 +42,10 @@ function insertDom(events) {
     text.innerHTML = template;
 }
 
-insertDom(data.events);
-
-// Insert Checkbox
+// capturar Checkbox e input
 
 let divCheckboxes = document.getElementById("options")
-let buscador = document.getElementById("search")
-
-// buscador.addEventListener('divCheckbox',filtroCombinado)
-// divCheckboxes.addEventListener('change',filtroCombinado)
-
-
-
-// Llamadas de funciones
-insertCheckboxes(data.events)
+let buscador = document.querySelector("input")
 
 
 function insertCheckboxes(array) {
@@ -75,11 +82,6 @@ function insertCheckboxes(array) {
 
 // filtros
 
-// function filtrarEventos(array, nombre){
-//     let arrayFiltrado = array.filter(element => element.name.toLowerCase().includes(nombre.toLowerCase()))
-//     return arrayFiltrado
-// }
-
 function filtrarCategorias(array){
     let checkboxes = document.querySelectorAll("input[type='checkbox']")
     let arrayChecks = Array.from(checkboxes) 
@@ -92,7 +94,8 @@ function filtrarCategorias(array){
     return arrayFiltrado
 }
 
-divCheckboxes.addEventListener('change',()=>{
-    let arrayFiltrado = filtrarCategorias(data.events)
-    insertDom(arrayFiltrado)
-})
+function filtrarEventos(array, nombre){
+    let arrayFiltrado = array.filter(element => element.name.toLowerCase().includes(nombre.toLowerCase()))
+    return arrayFiltrado
+}
+

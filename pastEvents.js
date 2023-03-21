@@ -1,8 +1,33 @@
+fetch("https://mindhub-xj03.onrender.com/api/amazing")
+.then((respuesta)=> respuesta.json())
+.then((data) =>{
+    console.log(data);
+    let arrayPast = [];
+
+    for (let i = 0; i < data.events.length; i++) {
+
+    if (data.events[i].date < data.currentDate) {
+
+        arrayPast.push(data.events[i]);
+    }
+    
+    }
+
+    insertDom(arrayPast)
+    insertCheckboxes(data.events)
+    function filtroCombinado() {
+        let arrayFitradoEventos = filtrarEventos(data.events, buscador.value)
+        let arrayFiltradoCategorias = filtrarCategorias(arrayFitradoEventos)
+        insertDom(arrayFiltradoCategorias)
+    }
+    buscador.addEventListener('input',filtroCombinado)
+    divCheckboxes.addEventListener('change',filtroCombinado)
+
+})
+.catch((Error)=> alert(Error))
+
 // insert Cards 
 
-for (let i = 0; i < data.events.length; i++) {
-    console.log(data.events[i])
-}
 
 function insertDom(events) {
     let template = "";
@@ -20,7 +45,7 @@ function insertDom(events) {
                         <p class="card-text">${events[i].description}</p>
                         <p class="card-text">${events[i].price}</p>
                         <p class="card-text">${events[i].category}</p>
-                        <a href="#" class="btn btn-primary">More Info</a>
+                        <a href="./details.html?id=${events[i]._id}" class="btn btn-primary">Details</a>
                     </div>
                 </div>
             </div>                        
@@ -30,33 +55,17 @@ function insertDom(events) {
     text.innerHTML = template;
 }
 
-let arrayPast = [];
 
 
-for (let i = 0; i < data.events.length; i++) {
 
-    if (data.events[i].date < data.currentDate) {
-
-        arrayPast.push(data.events[i]);
-    }
-
-}
-
-insertDom(arrayPast)
 
 // Insert Checkbox
 
 let divCheckboxes = document.getElementById("options")
-let buscador = document.getElementById("search")
-
-// buscador.addEventListener('divCheckbox',filtroCombinado)
-// divCheckboxes.addEventListener('change',filtroCombinado)
-
+let buscador = document.querySelector("input")
 
 
 // Llamadas de funciones
-insertCheckboxes(data.events)
-
 
 function insertCheckboxes(array) {
     let checkboxes = ""
@@ -92,16 +101,11 @@ function insertCheckboxes(array) {
 
 // filtros
 
-// function filtrarEventos(array, nombre){
-//     let arrayFiltrado = array.filter(element => element.name.toLowerCase().includes(nombre.toLowerCase()))
-//     return arrayFiltrado
-// }
-
-function filtrarCategorias(array) {
+function filtrarCategorias(array){
     let checkboxes = document.querySelectorAll("input[type='checkbox']")
-    let arrayChecks = Array.from(checkboxes)
+    let arrayChecks = Array.from(checkboxes) 
     let checksChecked = arrayChecks.filter(check => check.checked)
-    if (checksChecked.length == 0) {
+    if(checksChecked.length == 0){
         return array
     }
     let checkValues = checksChecked.map(check => check.value)
@@ -109,7 +113,13 @@ function filtrarCategorias(array) {
     return arrayFiltrado
 }
 
-divCheckboxes.addEventListener('change', () => {
-    let arrayFiltrado = filtrarCategorias(data.events)
-    insertDom(arrayFiltrado)
-})
+function filtrarEventos(array, nombre){
+    let arrayFiltrado = array.filter(element => element.name.toLowerCase().includes(nombre.toLowerCase()))
+    return arrayFiltrado
+}
+
+function filtroCombinado() {
+    let arrayFitradoEventos = filtrarEventos(data.events, buscador.value)
+    let arrayFiltradoCategorias = filtrarCategorias(arrayFitradoEventos)
+    insertDom(arrayFiltradoCategorias)
+}
